@@ -17,15 +17,6 @@ class Pokemon
        pokemon = db.execute("SELECT * FROM pokemon WHERE id = ?;", id).flatten
        Pokemon.new(id: pokemon[0], name: pokemon[1], type: pokemon[2], db: db)
       end
-
-      def alter_hp(new_hp)
-        sql = <<-SQL
-        UPDATE pokemon SET hp = ? WHERE id = ?;
-        SQL
-        db.execute(sql, [new_hp, id])
-      end 
 end
 
 
-# pokemon = DB[:conn].execute(sql, last_insert_rowid()).flatten
-#           Pokemon.new(id, pokemon[1], pokemon[2], pokemon[3], db )
